@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+
+
+@theme {
+  /* Shades of Red */
+  --red-50:  #fff5f5;
+  --red-100: #fee2e2;
+  --red-200: #fecaca;
+  --red-300: #fca5a5;
+  --red-400: #f87171;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+  --red-700: #b91c1c;
+  --red-800: #991b1b;
+  --red-900: #7f1d1d;
+
+  /* Backgrounds */
+  --color-background: var(--red-50);
+  --color-surface: var(--red-100);
+
+  /* Text */
+  --color-text-primary: var(--red-900);
+  --color-text-secondary: var(--red-700);
+
+  /* Borders */
+  --color-border: var(--red-300);
+  --color-input-border: var(--red-400);
+
+  /* Buttons */
+  --color-primary: var(--red-600);
+  --color-primary-hover: var(--red-700);
+
+  /* Links */
+  --color-link: var(--red-600);
+  --color-link-hover: var(--red-800);
+
+  /* Shadows */
+  --color-shadow: rgba(220, 38, 38, 0.25); /* red-600 with opacity */
+}
