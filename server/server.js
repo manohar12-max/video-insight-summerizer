@@ -3,8 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
- const userRoute=require("./routes/userRoute")
-// const profileRoute=require("./routes/profileRoutes")
+const userRoute=require("./routes/userRoute")
 const videoRoute=require("./routes/videoRoutes")
 dotenv.config(); 
 
@@ -12,6 +11,7 @@ const app = express();
 
 
 app.use(cors()); //Cross-Origin Resource Sharing (CORS) — which is essential when your frontend and backend are hosted on different domains, ports, or protocols.
+
 app.use(express.json());
 
 

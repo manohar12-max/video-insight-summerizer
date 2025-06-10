@@ -5,8 +5,10 @@ import { getVideoId } from "../util/youtube";
 import VideoMetaCard from "../components/VideoMetaCard";
 import api from "../lib/api";
 import Spinner from "../components/Spinner";
+import { useUserContext } from "../context/UserContext";
 
 export default function Home() {
+  const {user}=useUserContext()
   const [url, setUrl] = useState("");
   const [videoMeta, setVideoMeta] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -32,9 +34,15 @@ export default function Home() {
 
     try {
       setLoading(true);
-      const res = await api.post("/video/create", { videoId });
+      const res = await api.post("/video/meta", { videoId }, {
+        headers: {
+          Authorization: `Bearer ${user?.token}`,
+          "Content-Type": `application/json`
+        }
+      });
       setVideoMeta(res.data);
     } catch (err) {
+      console.error("Error fetching video metadata:", err);
       toast.error(err?.response?.data?.message || "Failed to fetch metadata");
       setVideoMeta(null);
     } finally {
@@ -66,7 +74,7 @@ export default function Home() {
         }
        {
         videoMeta ? (
-          <VideoMetaCard meta={videoMeta} />
+          <VideoMetaCard  meta={videoMeta} />
         ) : (
           !loading && <p className="text-gray-500">Enter a YouTube URL to see video details.</p>
         )}
